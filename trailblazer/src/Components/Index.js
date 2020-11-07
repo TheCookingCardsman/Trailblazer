@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react'
-// import logo from './logo.svg';
-// import './Card.css';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 const axios = require('axios');
 

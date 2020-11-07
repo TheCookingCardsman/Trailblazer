@@ -1,6 +1,4 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import React, { useState, useEffect } from 'react'
-// import logo from './logo.svg';
 import './App.css';
 import Card from './Components/TrailCard.js';
 import FinalView from './Components/FinalView.js';
@@ -12,10 +10,10 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <Card />
+            <FinalView />
           </Route>
 
-          <Route path="/view">
+          <Route path="/discover">
             <FinalView />
           </Route>
 

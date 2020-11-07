@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import TrailCard from './TrailCard';
-// import logo from './logo.svg';
-// import './Card.css';
 import CardDeck from 'react-bootstrap/CardDeck';
 const axios = require('axios');
 
