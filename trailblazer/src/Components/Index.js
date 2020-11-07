@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './Index.css';
 import TrailCard from './TrailCard';
 import CardDeck from 'react-bootstrap/CardDeck';
 const axios = require('axios');
@@ -36,18 +37,18 @@ function Index(props) {
   return (
     <div className="App">
       <header className="App-header">
+        {/* <div style={{'backgroundImage': `url('./01-banff-national-park-canada.jpg')`}}></div> */}
         {latitude} <br />
         {longitude}
-        <button onClick={getData}>
-          Get Data
+        <button onClick={getData} to="/discover">
+          Find Trails Nearby
         </button>
-        
+
         <CardDeck>
           {trails.map((info, idx) => {
             return <div key={idx} style={{marginLeft: 'auto', padding: 50}}><TrailCard props={info} /></div>
           })}
         </CardDeck>
-
       </header>
     </div>
   );

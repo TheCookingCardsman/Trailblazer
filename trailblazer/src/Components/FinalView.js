@@ -38,10 +38,10 @@ function FinalView(props) {
       <header className="App-header">
         {latitude} <br />
         {longitude}
-        <button onClick={getData}>
-          Get Data
+        <button onClick={getData} to="/discover">
+          Find Trails Nearby
         </button>
-        
+
         <CardDeck>
           {trails.map((info, idx) => {
             return <div key={idx} style={{marginLeft: 'auto', padding: 50}}><TrailCard props={info} /></div>

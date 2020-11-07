@@ -11,8 +11,8 @@ class App extends Component {
         google={this.props.google} 
         zoom={10}
         initialCenter={{
-        lat: 35.5496939,
-        lng: -120.7060049
+        lat: 40.5496939,
+        lng: -90.7060049
         }}
         style={style}
       />

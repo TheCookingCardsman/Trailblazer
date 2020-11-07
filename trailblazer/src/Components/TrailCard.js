@@ -12,7 +12,7 @@ function TrailCard(props) {
         <Card.Img variant="top" style={{height:'50%', width:'auto'}} src={props.props.imgMedium} />
         <Card.Body>
           <Card.Title style={{color:'black'}}>{props.props.name}</Card.Title>
-          <Card.Text style={{'text-align': 'left', color:'black'}}>
+          <Card.Text style={{'textAlign': 'left', color:'black'}}>
             {props.props.summary}
           </Card.Text>
           <Button variant="primary" href='/map-view'>Discover</Button>

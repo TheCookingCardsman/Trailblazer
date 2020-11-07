@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
+import Index from './Components/Index.js';
 import MapView from './Components/MapView.js';
 import FinalView from './Components/FinalView.js';
-const axios = require('axios');
 
 function App() {
   return(
@@ -10,7 +10,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <FinalView />
+            <Index />
           </Route>
 
           <Route path="/discover">
