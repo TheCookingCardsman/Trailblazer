@@ -15,7 +15,7 @@ function TrailCard(props) {
           <Card.Text style={{'text-align': 'left', color:'black'}}>
             {props.props.summary}
           </Card.Text>
-          <Button variant="primary" href='/trails'>Discover</Button>
+          <Button variant="primary" href='/map-view'>Discover</Button>
         </Card.Body>
       </Card>
     </div>

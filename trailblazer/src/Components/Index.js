@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import './index.css';
+import React, { useState, useEffect } from 'react'
+import TrailCard from './TrailCard';
+import CardDeck from 'react-bootstrap/CardDeck';
 const axios = require('axios');
 
-function Index() {
+function Index(props) {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   const [maxDistance, setMaxDistance] = useState(25);
@@ -40,19 +41,12 @@ function Index() {
         <button onClick={getData}>
           Get Data
         </button>
-
-        <div class="row">
-          <div class="column">
-            {trails.map((item,index) => {
-              return <div>{item.name}</div>
-            })}
-          </div>
-          <div class="column">
-            {trails.map((item,index) => {
-              return <div>{item.name}</div>
-            })}
-          </div>
-        </div>
+        
+        <CardDeck>
+          {trails.map((info, idx) => {
+            return <div key={idx} style={{marginLeft: 'auto', padding: 50}}><TrailCard props={info} /></div>
+          })}
+        </CardDeck>
 
       </header>
     </div>

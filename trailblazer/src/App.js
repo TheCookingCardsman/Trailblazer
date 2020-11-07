@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
-import Card from './Components/TrailCard.js';
+import MapView from './Components/MapView.js';
 import FinalView from './Components/FinalView.js';
 const axios = require('axios');
 
@@ -17,8 +17,8 @@ function App() {
             <FinalView />
           </Route>
 
-          <Route path="/trails">
-            <p>hello</p>
+          <Route path="/map-view">
+            <MapView />
           </Route>
         </Switch>
       </Router>
