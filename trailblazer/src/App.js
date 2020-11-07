@@ -10,10 +10,6 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <Index />
-          </Route>
-
-          <Route path="/discover">
             <FinalView />
           </Route>
 
