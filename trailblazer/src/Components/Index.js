@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 // import logo from './logo.svg';
 // import './Card.css';
+import './index.css';
 const axios = require('axios');
 
 function Index() {
@@ -41,10 +42,19 @@ function Index() {
         <button onClick={getData}>
           Get Data
         </button>
-        
-        {trails.map((item,index) => {
-          return <div>{item.name}</div>
-        })}
+
+        <div class="row">
+          <div class="column">
+            {trails.map((item,index) => {
+              return <div>{item.name}</div>
+            })}
+          </div>
+          <div class="column">
+            {trails.map((item,index) => {
+              return <div>{item.name}</div>
+            })}
+          </div>
+        </div>
 
       </header>
     </div>

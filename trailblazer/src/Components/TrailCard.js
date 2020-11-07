@@ -10,8 +10,8 @@ function TrailCard(props) {
   console.log(props.props.difficulty)
   return (
     <div>
-      <Card style={{ width: '20rem' }}>
-        <Card.Img variant="top" src={props.props.imgMedium} />
+      <Card style={{height: 600, width: 400, zoom: 1 }}>
+        <Card.Img variant="top" style={{height:'50%', width:'auto'}} src={props.props.imgMedium} />
         <Card.Body>
           <Card.Title style={{color:'black'}}>{props.props.name}</Card.Title>
           <Card.Text style={{color:'black'}}>

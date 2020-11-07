@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import TrailCard from './TrailCard';
 // import logo from './logo.svg';
 // import './Card.css';
+import CardDeck from 'react-bootstrap/CardDeck';
 const axios = require('axios');
 
 function FinalView(props) {
@@ -43,9 +44,11 @@ function FinalView(props) {
           Get Data
         </button>
         
-        {trails.map((info, idx) => {
-          return <div key={idx}><TrailCard props={info} /></div>
-        })}
+        <CardDeck>
+          {trails.map((info, idx) => {
+            return <div key={idx} style={{marginLeft: 'auto', padding: 50}}><TrailCard props={info} /></div>
+          })}
+        </CardDeck>
 
       </header>
     </div>
