@@ -17,8 +17,15 @@ function App() {
             <FinalView />
           </Route>
 
-          <Route path="/map-view">
-            <MapView />
+          <Route path="/map-view" render={(props) => (
+            <MapView 
+            {...props}
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAN2xbYu8DmKyaI_CLnrvevrC2yHNgi3U&v=3.exp&libraries=geometry,drawing,places"
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `1000px` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+            />
+          )}>
           </Route>
         </Switch>
       </Router>

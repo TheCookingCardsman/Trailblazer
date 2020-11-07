@@ -7,7 +7,7 @@ module.exports = function(app) {
   var DOMParser = require('xmldom').DOMParser;
   require('dotenv').config();
 
-  app.post('/api/downloadGXP', (req, res) => {
+  app.post('/api/downloadGPX', (req, res) => {
     // Webscraping to obtain GPX file here
     let url = "";
 
@@ -42,7 +42,7 @@ module.exports = function(app) {
       });
   })
   
-  app.post('/api/convertGXP', (req, res) => {
+  app.post('/api/convertGPX', (req, res) => {
     var gpx = new DOMParser().parseFromString(fs.readFileSync(`${process.env.DOWNLOAD_ABSOLUTE_PATH}${req.body.file_name}`, 'utf8'));
     var converted = tj.gpx(gpx);
     console.log(converted);

@@ -36,15 +36,17 @@ function FinalView(props) {
   return (
     <div className="App">
       <header className="App-header">
-        {latitude} <br />
-        {longitude}
+        Your Current Latitude and Longitude Coordinates: {latitude}, {longitude}
         <button onClick={getData} to="/discover">
-          Find Trails Nearby
+          Find Trails Near You!
         </button>
 
         <CardDeck>
           {trails.map((info, idx) => {
-            return <div key={idx} style={{marginLeft: 'auto', padding: 50}}><TrailCard props={info} /></div>
+            let props = {
+              info: info,
+            }
+            return <div key={idx} style={{marginLeft: 'auto', padding: 50}}><TrailCard props={props} /></div>
           })}
         </CardDeck>
 
