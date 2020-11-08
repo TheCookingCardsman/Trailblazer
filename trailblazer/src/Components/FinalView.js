@@ -13,12 +13,13 @@ function FinalView(props) {
   const [loadEffect, setLoadEffect] = useState(false);
   const [addressState, setAddressState] = useState(false);
   const [getLatitude, setGetLatitude] = useState(false);
-
-  Geocode.setApiKey("AIzaSyAAN2xbYu8DmKyaI_CLnrvevrC2yHNgi3U");
+  require('dotenv').config();
+  Geocode.setApiKey(`${process.env.REACT_APP_API_KEY}`);
+  
 
   useEffect(() => {
     if (loadEffect == true) {
-      axios.get(`https://www.hikingproject.com/data/get-trails?lat=${latitude}&lon=${longitude}&maxDistance=${maxDistance}&key=200967639-5ae34afc9d4778363c950c2067076465`)
+      axios.get(`https://www.hikingproject.com/data/get-trails?lat=${latitude}&lon=${longitude}&maxDistance=${maxDistance}&key=${process.env.REACT_APP_HIKER_KEY}`)
         .then(res => {
           console.log(res);
           setTrails(res.data.trails);

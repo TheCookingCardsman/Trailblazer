@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import Geocode from 'react-geocode';
 import ReactStreetview from 'react-streetview';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+require('dotenv').config();
 function StreetViewComp(props) {
   const [view, setView] = useState(false);
   const [streetViewPanoramaOptions, setStreetViewPanoramaOptions] = useState({});
-  Geocode.setApiKey("AIzaSyAAN2xbYu8DmKyaI_CLnrvevrC2yHNgi3U");
+  Geocode.setApiKey(`${process.env.REACT_APP_API_KEY}`);
   
   useEffect(() => {
     Geocode.fromAddress(props.name)
