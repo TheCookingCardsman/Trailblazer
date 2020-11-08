@@ -1,13 +1,16 @@
 import React, { Component, useEffect, useState} from 'react';
 import { withGoogleMap, withScriptjs, GoogleMap, Polygon} from 'react-google-maps';
+import StreetView from './StreetView.js';
+import SplitPane from 'react-split-pane';
+
 const axios = require('axios');
 
 const MapView = withScriptjs(withGoogleMap(props => {
   const info = props.location.state;
   console.log(info);
   
-  var trail_name = info.props.name.toLowerCase();
-  trail_name = trail_name.split(' ').join('-');
+  var original_trail_name = info.props.name.toLowerCase();
+  var trail_name = original_trail_name.split(' ').join('-');
 
   const [coordinatesJson, setCoordinatesJson] = useState([])
   const [downloaded, setDownloaded] = useState(false)
@@ -62,23 +65,30 @@ const MapView = withScriptjs(withGoogleMap(props => {
 
   if (coordinatesJson.length > 0) {
     return (
-      <GoogleMap 
-        defaultCenter = { { lat: coordinatesJson[0][1], lng: coordinatesJson[0][0]  } }
-        defaultZoom = { 13 }
-      >
-      <Polygon 
-        path={reversedCoords} 
-        editable={true}
-        options={{
-          strokeColor: "#00000F",
-          strokeOpacity: 0.8,
-          strokeWeight: 2,
-          // fillColor: "#FF0000",
-          fillOpacity: 0.05,
-          polygonKey: 1
-        }}
-      />
-    </GoogleMap>
+      <SplitPane split="vertical" minSize={50}>
+        <div>
+          <GoogleMap 
+            defaultCenter = { { lat: coordinatesJson[0][1], lng: coordinatesJson[0][0]  } }
+            defaultZoom = { 13 }
+          >
+            <Polygon 
+              path={reversedCoords} 
+              editable={true}
+              options={{
+                strokeColor: "#00000F",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                // fillColor: "#FF0000",
+                fillOpacity: 0.05,
+                polygonKey: 1
+              }}
+            />
+          </GoogleMap>
+        </div>
+        <div>
+          <StreetView name={original_trail_name} />
+        </div>
+    </SplitPane>
     );
   } else {
     return (

@@ -12,9 +12,14 @@
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
+    "react-geocode": "^0.2.2",
+    "react-google-map-street-view": "^1.1.0",
     "react-google-maps": "^9.4.5",
+    "react-google-streetview": "0.0.9",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "react-split-pane": "^0.1.92",
+    "react-streetview": "^1.1.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
