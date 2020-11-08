@@ -37,7 +37,6 @@ function Index(props) {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <div style={{'backgroundImage': `url('./01-banff-national-park-canada.jpg')`}}></div> */}
         {latitude} <br />
         {longitude}
         <button onClick={getData} to="/discover">
