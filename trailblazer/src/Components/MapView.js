@@ -3,25 +3,53 @@ import { withGoogleMap, withScriptjs, GoogleMap, Polygon} from 'react-google-map
 const axios = require('axios');
 
 const MapView = withScriptjs(withGoogleMap(props => {
-  // const info = props.location.state;
-  // console.log(info);
+  const info = props.location.state;
+  console.log(info);
+  
+  var trail_name = info.props.name.toLowerCase();
+  trail_name = trail_name.split(' ').join('-');
+
   const [coordinatesJson, setCoordinatesJson] = useState([])
+  const [downloaded, setDownloaded] = useState(false)
 
-  var dat;
-  const [update, setUpdate] = useState(true)
+  const downloadGPX = () => {
+    axios.post('http://localhost:8000/api/downloadGPX', {
+      trail_page: `${info.props.url}`
+    })
+    .then((response) => {
+      console.log(response);
+      setDownloaded(true);
+    })
+    .catch((err) =>  {
+      console.log(err);
+    })
+  }
 
-  if(update) {
+  const getData = () => {
     axios.post('http://localhost:8000/api/convertGPX', {
-      file_name: 'castlewood-state-park-loop.gpx'
+      file_name: `${trail_name}.gpx`
     })
     .then((response) => {
       setCoordinatesJson(response.data.features[0].geometry.coordinates);
-      setUpdate(false);
     })
     .catch ((err) => {
       console.log(err);
     })
   }
+
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  useEffect(async () => {
+    if (downloaded == false) {
+      await downloadGPX();
+    } else {
+      await sleep(15000);
+      await getData();
+    }
+  }, [downloaded])
+  
 
   var coords = [];
   for (var i = 0; i < coordinatesJson.length; i++) {
@@ -32,11 +60,12 @@ const MapView = withScriptjs(withGoogleMap(props => {
     return { lat: ll.lng, lng: ll.lat };
   });
 
-  return (
-    <GoogleMap 
-      defaultCenter = { { lat: 38.5, lng: -90.5 } }
-      defaultZoom = { 13 }
-    >
+  if (coordinatesJson.length > 0) {
+    return (
+      <GoogleMap 
+        defaultCenter = { { lat: coordinatesJson[0][1], lng: coordinatesJson[0][0]  } }
+        defaultZoom = { 13 }
+      >
       <Polygon 
         path={reversedCoords} 
         editable={true}
@@ -51,6 +80,13 @@ const MapView = withScriptjs(withGoogleMap(props => {
       />
     </GoogleMap>
     );
+  } else {
+    return (
+      <div>
+        Loading...
+      </div>
+    )
+  }
 }))
 
 export default MapView;
