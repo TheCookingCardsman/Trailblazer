@@ -27,8 +27,8 @@ function StreetViewComp(props) {
   if (view == true && streetViewPanoramaOptions != {}) {
     return (
       <div style={{
-        width: '1200px',
-        height: '450px',
+        width: '1575px',
+        height: '390px',
         backgroundColor: '#eeeeee'}}>
           <ReactStreetview
             apiKey="AIzaSyAAN2xbYu8DmKyaI_CLnrvevrC2yHNgi3U"

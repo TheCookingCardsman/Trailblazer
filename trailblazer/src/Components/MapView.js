@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState} from 'react';
 import { withGoogleMap, withScriptjs, GoogleMap, Polygon} from 'react-google-maps';
+import './MapView.css';
 import StreetView from './StreetView.js';
 import SplitPane from 'react-split-pane';
 
@@ -69,7 +70,7 @@ const MapView = withScriptjs(withGoogleMap(props => {
         <div>
           <GoogleMap 
             defaultCenter = { { lat: coordinatesJson[0][1], lng: coordinatesJson[0][0]  } }
-            defaultZoom = { 13 }
+            defaultZoom = { 15 }
           >
             <Polygon 
               path={reversedCoords} 
